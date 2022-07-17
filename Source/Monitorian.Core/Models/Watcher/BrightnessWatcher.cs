@@ -26,7 +26,8 @@ namespace Monitorian.Core.Models.Watcher
 		/// <returns>True if successfully subscribes</returns>
 		public bool Subscribe(Action<string, int> onBrightnessChanged, Action<string> onError)
 		{
-			(_watcher, var message) = MSMonitor.StartBrightnessEventWatcher();
+			(var ww, var message) = MSMonitor.StartBrightnessEventWatcher();
+			_watcher = ww;
 			if (_watcher is null)
 			{
 				if (!string.IsNullOrEmpty(message))

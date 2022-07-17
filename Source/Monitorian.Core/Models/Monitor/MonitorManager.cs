@@ -54,14 +54,7 @@ namespace Monitorian.Core.Models.Monitor
 
 		private static HashSet<string> GetOptionIds(string option)
 		{
-			var ids = AppKeeper.StandardArguments
-				.SkipWhile(x => !string.Equals(x, option, StringComparison.OrdinalIgnoreCase))
-				.Skip(1) // 1 means option.
-				.Select(x => (success: DeviceConversion.TryParseToDeviceInstanceId(x, out string id), id))
-				.TakeWhile(x => x.success)
-				.Select(x => x.id);
-
-			return new HashSet<string>(ids);
+			return new HashSet<string>();
 		}
 
 		#endregion
